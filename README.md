@@ -1,6 +1,11 @@
-# Oklahoma Election Shapefile
+# License
+This data was generated using data from the Redistricting Data Hub.  Any use of this project shall also comply with restrictions on use of data and attribution requirements set forth in the Redistricting Data Hub terms and conditions found at: [https://redistrictingdatahub.org/terms-and-conditions/](https://redistrictingdatahub.org/terms-and-conditions/).
 
-This shapefile was processed by Professor Ellen Veomett and her student Ananya Agarwal.
+Use of this project is further governed by the terms of the [Creative Commons Attribution Noncommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/legalcode.en)
+
+# Oklahoma Election Json
+
+This shapefile was processed by Professor Ellen Veomett, her student Ananya Agarwal and Arbie Hsu using the corresponding jupyter notebook.  As part of the cleaning process, precincts were nested within counties and small rook adjacencies (under 30.5 m) were changed to queen adjacencies.
 
 # **Sources**
 @author: eveomett AI for Redistricting, USF All data retrieved 06/01/24:
@@ -21,6 +26,8 @@ Obtain the following data from Restricting Data Hub
 
 [2016 election data](https://redistrictingdatahub.org/dataset/vest-2016-oklahoma-precinct-and-election-results/)**:**  VEST 2016 Oklahoma precinct and election results
 
+[2020 County data](https://redistrictingdatahub.org/dataset/oklahoma-county-pl-94171-2020/): from 2020 Census Redistricting Data (P.L. 94-171) Shapefiles
+
 # **Processing**
 
 Demographic data were aggregated from the census block level and precincts were assigned to districts using [MGGG's proration software](https://github.com/mggg/maup). Election data were also prorated onto VTDs from the original precinct shapefile using the `maup` package.
@@ -29,12 +36,14 @@ Demographic data were aggregated from the census block level and precincts were 
 
 Below is a brief description of each of the listed variables in the attribute table of the VTD shapefile:
 
-- `COUNTY20`: County
-- `P_CODE20`: Precinct Code
-- `CODE_NAME20`: Voting tabulation district name
-- `CD`: Congressional district ID in 2022 enacted congressional map
+- `STATEFP20`: State FIPS code  
+- `COUNTYFP20`: County FIPS code  
+- `GEOID20`: VTD FIPS code  
+- `PCT_CEB20`: Percentage of women who have ever given birth, based on data from the 2020 Census  
+- `COUNTY_NAM20`: County name
+- `CD`: Congressional district ID in 2021 enacted congressional map
 - `SEND`: State Senate district for 2021 State Senate Adopted Plan
-- `HDIST`: State House district for 2024 State House of Representatives Districts Plan
+- `HDIST`: State House district for 2021 State House of Representatives Districts Plan
 - `TOTPOP`: Total population in 2020 Census
 - `NH_WHITE`: White, non-hispanic, population in 2020 Census
 - `NH_BLACK`: Black, non-hispanic, population in 2020 Census
@@ -62,26 +71,36 @@ Below is a brief description of each of the listed variables in the attribute ta
 - `2MOREVAP`: Two or more races, non-hispanic, voting age population in 2020 Census
 - `ATG18D`: Number of votes for 2018 Democratic attorney general candidate
 - `ATG18R`: Number of votes for 2018 Republican attorney general candidate
-- `ATG18O`: Number of votes for 2018 other party's attorney general candidate
-- `GOV18D`: Number of votes for 2018 Democratic gubernatorial candidate
-- `GOV18R`: Number of votes for 2018 Republican gubernatorial candidate
-- `GOV18O`: Number of votes for 2018 other party's gubernatorial candidate
-- `PRE20D`: Number of votes for 2020 Democratic presidential candidate
-- `PRE20R`: Number of votes for 2020 Republican presidential candidate
-- `PRE20O`: Number of votes for 2020 other party's presidential candidate
-- `SOS18D`: Number of votes for 2018 Democratic Secretary of State
-- `SOS18R`: Number of votes for 2018 Republican Secretary of State
-- `SOS18O`: Number of votes for 2018 other party's Secretary of State
-- `TRE18D`: Number of votes for 2018 Democratic Treasurer
-- `TRE18R`: Number of votes for 2018 Republican Treasurer
-- `TRE18O`: Number of votes for 2018 other party's Treasurer
-- `USS20D`: Number of votes for 2020 Democratic senate candidate
-- `USS20R`: Number of votes for 2020 Republican senate candidate
-- `USS20O`: Number of votes for 2020 other party's senate candidate
-- `COM18D`: Number of votes for 2018 Democratic Comptroller
-- `COM18R`: Number of votes for 2018 Republican Comptroller
-- `COM18O`: Number of votes for 2018 other party's Comptroller
+- `AUD18D`: Number of votes for 2018 Democratic Auditor
+- `AUD18R`: Number of votes for 2018 Republican Auditor
+- `COC18D`: Number of votes for 2018 Democratic Corporation Commissioner candidate  
+- `COC18R`: Number of votes for 2018 Republican Corporation Commissioner candidate  
+- `COC18O`: Number of votes for 2018 other Corporation Commissioner candidates  
+- `COC20R`: Number of votes for 2020 Republican Corporation Commissioner candidate  
+- `COC20O`: Number of votes for 2020 other Corporation Commissioner candidates
+- `INS18D`: Number of votes for 2018 Democratic Commissioner of Insurance
+- `INS18R`: Number of votes for 2018 Republican Commissioner of Insurance
+- `LAB18D`: Number of votes for 2018 Democratic Commissioner of Labor
+- `LAB18R`: Number of votes for 2018 Republican Commissioner of Labor
+- `LAB18O`: Number of votes for 2018 other Commissioner of Labor
+- `LTG18D`: Number of votes for 2018 Democratic Lieutenant Governor
+- `LTG18R`: Number of votes for 2018 Republican Lieutenant Governor
+- `LTG18O`: Number of votes for 2018 other Lieutenant Governor
+- `PRE16D`: Number of votes for 2016 Democratic President
+- `PRE16O`: Number of votes for 2016 other party's President
+- `PRE16R`: Number of votes for 2016 Republican President
+- `PRE20D`: Number of votes for 2020 Democratic President
+- `PRE20R`: Number of votes for 2020 Republican President
+- `PRE20O`: Number of votes for 2020 other party's President
+- `SPI18D`: Number of votes for 2018 Democratic Superintendent of Public Instruction  
+- `SPI18O`: Number of votes for 2018 other party's Superintendent of Public Instruction  
+- `SPI18R`: Number of votes for 2018 Republican Superintendent of Public Instruction  
+- `TRE18O`: Number of votes for 2018 other party's Treasurer  
+- `TRE18R`: Number of votes for 2018 Republican Treasurer  
+- `USS16D`: Number of votes for 2016 Democratic Senate candidate  
+- `USS16O`: Number of votes for 2016 other party's Senate candidate  
+- `USS16R`: Number of votes for 2016 Republican Senate candidate  
+- `USS20D`: Number of votes for 2020 Democratic Senate candidate  
+- `USS20O`: Number of votes for 2020 other party's Senate candidate  
+- `USS20R`: Number of votes for 2020 Republican Senate candidate  
 
-# **Projection**
-
-The shapefile uses a UTM NAD83 projection (EPSG: 4269).
